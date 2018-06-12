@@ -77,9 +77,9 @@ def command_windows(m): # Definimos la función
     cid = m.chat.id # Guardamos el ID de la conversación para poder responder.
     # Si no esta en la lista de chats permitidos, deniega acceso
     if not str(cid) in USERS:
-        bot.send_message( cid, "Permiso denegado, aunque igualmente Windows apesta")
+        bot.send_message( cid, "Permiso denegado, aunque igualmente Windows mola menos que Linux")
     else:
-        bot.send_message( cid, 'Windows apesta')
+        bot.send_message( cid, 'Windows mola menos que Linux')
 
 # Comando que muestra enlace al blog
 @bot.message_handler(commands=['blog'])
