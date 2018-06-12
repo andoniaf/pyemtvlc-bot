@@ -1,6 +1,8 @@
 FROM python:3
 
-RUN mkdir /pyemtbot
+MAINTAINER andoniaf
+
+RUN mkdir -p /pyemtbot/logs
 
 WORKDIR /pyemtbot
 
