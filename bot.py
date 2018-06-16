@@ -11,9 +11,9 @@ from modules.uptime import logs_size
 # Importamos el TOKEN y USERS desde settings
 from settings import TOKEN
 from settings import USERS
-from settings import LOGDIR
-from settings import LOGFILE
-from settings import path
+from vars import LOGDIR
+from vars import LOGFILE
+from vars import path
 #Modulo EMT VLC
 from modules.emtVlc import prime_buses
 import os
@@ -26,9 +26,6 @@ last_error_time = None
 #########################################
 test_menu = types.ReplyKeyboardMarkup()
 test_menu.add("/emt 764", "/emt 1547")
-test_menu.add("/emt 800", "test01")
-test_menu.add("test02", "test03")
-test_menu.add("test04")
 
 ############ LISTENER ###################
 # Con esto, estamos definiendo una función llamada 'listener', que recibe como
