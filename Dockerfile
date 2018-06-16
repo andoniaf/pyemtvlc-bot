@@ -8,7 +8,7 @@ WORKDIR /pyemtbot
 
 COPY requirements.txt /pyemtbot
 
-RUN pip install -r requirements.txt
+RUN pip install -r reqents.txt
 
 COPY . /pyemtbot
 
