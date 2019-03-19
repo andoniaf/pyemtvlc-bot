@@ -6,13 +6,10 @@ import telebot
 import time
 from telebot import types  # Tipos para la API del bot.
 from datetime import datetime
-from modules.uptime import uptime_string
+from modules.uptime import uptime_string, query_emt
 # Importamos el TOKEN y USERS desde settings
-from settings import TOKEN
-from settings import USERS
-from vars import LOGDIR
-from vars import LOGFILE
-from vars import path
+from settings import TOKEN, USERS
+from vars import LOGDIR, LOGFILE, path
 import os
 
 
@@ -88,8 +85,7 @@ def command_emt(m):
     cid = m.chat.id
     bot.send_chat_action(cid, "typing")
     parada = m.text.strip('/emt ')
-
-    message = prime_buses(parada)
+    message = query_emt(parada)
     bot.send_message(cid, message)
 
 

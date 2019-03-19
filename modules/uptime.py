@@ -43,9 +43,9 @@ def uptime_string(startup_time_in_seconds, last_error_time):
 
     return string
 
-# Funcion para comprobar el espacio consumido por los logs
-## En proceso de desarrollo##
-def logs_size(path):
+
+# Funcion para consultar la EMT
+def query_emt(parada):
     # Mensaje = logs_size_str
-    logs_size_str = (subprocess.getoutput("du -hac -d 1"+path+"| egrep 'log|total'"))+" carpeta Bot"
-    return logs_size_str
+    emt_info = (subprocess.getoutput("pyemtvlc " + parada))
+    return emt_info
