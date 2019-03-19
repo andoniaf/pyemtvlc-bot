@@ -3,19 +3,16 @@
 
 # Librerías
 import telebot
+import time
 from telebot import types  # Tipos para la API del bot.
 from datetime import datetime
-import time  # Librería para hacer que el programa que controla el bot no se acabe.
 from modules.uptime import uptime_string
-from modules.uptime import logs_size
 # Importamos el TOKEN y USERS desde settings
 from settings import TOKEN
 from settings import USERS
 from vars import LOGDIR
 from vars import LOGFILE
 from vars import path
-# Modulo EMT VLC
-from modules.emtVlc import prime_buses
 import os
 
 
@@ -25,8 +22,8 @@ print("Bot iniciado y listo para servir:")
 start_time = time.time()
 last_error_time = None
 # ########################################
-test_menu = types.ReplyKeyboardMarkup()
-test_menu.add("/emt 764", "/emt 1547")
+# test_menu = types.ReplyKeyboardMarkup()
+# test_menu.add("/emt 764", "/emt 1547")
 
 
 # ########### LISTENER ###################
@@ -34,20 +31,21 @@ test_menu.add("/emt 764", "/emt 1547")
 #   parámetro un dato llamado 'messages'.
 def listener(messages):
     for m in messages: # Por cada dato 'm' en el dato 'messages'
-        if m.content_type == 'text': # Filtramos mensajes que sean tipo texto.
-            cid = m.chat.id # Almacenaremos el ID de la conversación.
+        if m.content_type == 'text':  # Filtramos mensajes que sean tipo texto.
+            cid = m.chat.id  # Almacenaremos el ID de la conversación.
             now = datetime.now().strftime("%Y-%m-%d %H:%M")
             if cid > 0:
-                # Si 'cid' es positivo, usaremos 'm.chat.first_name' para el nombre.
+                # Si 'cid' es >0, usaremos 'm.chat.first_name' para el nombre.
                 mensaje = "[" + now + "]: " + str(m.chat.first_name) + "(" + str(cid) + "): " + m.text
             else:
-                # Si 'cid' es negativo, usaremos 'm.from_user.first_name' para el nombre.
-                mensaje = "[" + now + "]: " + str(m.from_user.first_name) + "(" + str(cid) + "): " + m.text
-            f = open( LOGDIR + LOGFILE, 'a') # Abrimos nuestro fichero log en modo 'Añadir'.
-            f.write(mensaje + "\n") # Escribimos la linea de log en el fichero.
-            f.close() # Cerramos el fichero para que se guarde.
-            #mensaje = update.mensaje.text.encode('utf-8')
-            print(mensaje) # Imprimimos el mensaje tambien en la terminal
+                # Si 'cid' es <0, usaremos 'm.from_user.first_name'.
+                mensaje = "[" + now + "]: " + str(m.from_user.first_name) + \
+                        "(" + str(cid) + "): " + m.text
+            f = open(LOGDIR + LOGFILE, 'a')
+            f.write(mensaje + "\n")
+            f.close()
+            mensaje = update.mensaje.text.encode('utf-8')
+            print(mensaje)
 
 
 # Ejecutamos funcion que "escucha" los mensajes
@@ -62,7 +60,7 @@ bot.set_update_listener(listener)
 def command_helloworld(m):  # Definimos la función
     cid = m.chat.id  # Guardamos el ID de la conversación para poder responder.
     # funcion 'send_message()' del bot: enviamos al ID de chat guardado el texto indicado
-    bot.send_message( cid, 'Hello World')
+    bot.send_message(cid, 'Hello World')
 
 
 # Funcion de prueba para controlar que usuarios pueden usar los comandos BOT
@@ -71,9 +69,9 @@ def command_start(m):
     cid = m.chat.id
     # Si no esta en la lista de chats permitidos, deniega acceso
     if not str(cid) in USERS:
-        bot.send_message( cid, "Permiso denegado")
+        bot.send_message(cid, "Permiso denegado")
     else:
-        bot.send_message( cid, "Permiso concedido")
+        bot.send_message(cid, "Permiso concedido")
 
 
 # Comando que muestra enlace al blog
@@ -90,13 +88,8 @@ def command_emt(m):
     cid = m.chat.id
     bot.send_chat_action(cid, "typing")
     parada = m.text.strip('/emt ')
-    # Comprobar si se ha introducido una parada "valida"
-    if parada == '':
-        message = "No has introducido la parada!!"
-    elif parada.isdigit() != True:
-        message = "No has introducido un numero de parada valido."
-    else:
-        message = prime_buses(parada)
+
+    message = prime_buses(parada)
     bot.send_message(cid, message)
 
 

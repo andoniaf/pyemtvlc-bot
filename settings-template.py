@@ -1,4 +1,4 @@
-TOKEN = '' # token del bot
+TOKEN = ''  # token del bot
 
-USERS = "" # Chat ID permitidos
+USERS = ""  # Chat ID permitidos
 ADMIN = ""
