@@ -27,7 +27,7 @@ last_error_time = None
 # Con esto, estamos definiendo una función llamada 'listener', que recibe como
 #   parámetro un dato llamado 'messages'.
 def listener(messages):
-    for m in messages: # Por cada dato 'm' en el dato 'messages'
+    for m in messages:  # Por cada dato 'm' en el dato 'messages'
         if m.content_type == 'text':  # Filtramos mensajes que sean tipo texto.
             cid = m.chat.id  # Almacenaremos el ID de la conversación.
             now = datetime.now().strftime("%Y-%m-%d %H:%M")
