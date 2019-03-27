@@ -1,4 +1,4 @@
-- []: Change base image to python:alpine
+- []: Improve docker image
 - []: Manage emt error, p.e: when there is no "parada", only /emt
 - []: Setup autodeploy Heroku
 - []: Start adding test
