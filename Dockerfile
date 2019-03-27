@@ -1,8 +1,8 @@
-FROM python:3
+FROM python:3.7-alpine3.9
 
 MAINTAINER andoniaf
 
-RUN mkdir -p /pyemtbot/logs
+RUN apk add gcc libc-dev libffi-dev openssl-dev
 
 WORKDIR /pyemtbot
 
