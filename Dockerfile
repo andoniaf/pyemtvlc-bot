@@ -12,4 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY . /pyemtbot
 
-ENTRYPOINT [ "python", "./bot.py" ]
+RUN adduser -D pyuser
+USER pyuser
+
+CMD [ "python", "/pyemtbot/bot.py" ]
