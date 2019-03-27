@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 
 COPY . /pyemtbot
 
-CMD [ "python", "./bot.py" ]
+ENTRYPOINT [ "python", "./bot.py" ]

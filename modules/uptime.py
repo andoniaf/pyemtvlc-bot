@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import platform
 import uptime
 from datetime import timedelta
