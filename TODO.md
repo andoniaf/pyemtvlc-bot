@@ -1,0 +1,2 @@
+- []: Change base image to python:alpine
+- []: Manage emt error, p.e: when there is no "parada", only /emt
