@@ -1,6 +1,6 @@
 FROM python:3.7-alpine3.9
 
-RUN apk add gcc libc-dev libffi-dev openssl-dev
+RUN apk --no-cache add gcc libc-dev libffi-dev openssl-dev
 
 WORKDIR /pyemtbot
 
