@@ -3,4 +3,3 @@
 echo "Lintering..."
 # https://github.com/hadolint/hadolint
 docker run --rm -i hadolint/hadolint hadolint --ignore DL3018 - < Dockerfile && echo "Lintering OK"
-
