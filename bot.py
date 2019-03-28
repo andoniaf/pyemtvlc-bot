@@ -8,7 +8,7 @@ import sys
 import os
 from threading import Thread
 from telegram.ext import Updater, CommandHandler, Filters
-from settings import TOKEN, USERS
+from settings import TOKEN
 
 from modules.utils import uptime_string, query_emt
 
