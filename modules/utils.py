@@ -1,9 +1,7 @@
 import platform
 import uptime
 from datetime import timedelta
-import time
 import subprocess
-import os
 
 
 # Build uptime msg

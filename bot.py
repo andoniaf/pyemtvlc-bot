@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 # Librerías
-import telegram
 import logging
 import sys
 import os
