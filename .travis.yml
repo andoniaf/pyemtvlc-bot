@@ -12,15 +12,16 @@ env:
   global:
   - IMAGE_NAME=pyemtvlc-bot
   - REGISTRY_USER=andoniaf
+  - VERSION=$(date '+%Y%m%d%H%M%S')
 
 before_deploy:
   - docker build -t "$IMAGE_NAME" .
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
   - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
-  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${VERSION}"
 
 deploy:
   provider: script
-  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${VERSION}"
   on:
     branch: master
