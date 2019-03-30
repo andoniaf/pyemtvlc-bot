@@ -17,8 +17,8 @@ env:
 before_deploy:
   - docker build -t "$IMAGE_NAME" .
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
-  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
-  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${VERSION}"
+  - docker tag "$IMAGE_NAME" "${REGISTR_USER}/${IMAGE_NAME}:latest"
+  - docker tag "$IMAGE_NAME" "${REGISTR_USER}/${IMAGE_NAME}:${VERSION}"
 
 deploy:
   provider: script
