@@ -19,7 +19,7 @@ env:
 before_deploy:
   - docker build -t "$IMAGE_NAME" .
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
-  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+  - echo "$HEROKU_PASS" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
   - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - docker tag "$IMAGE_NAME" "${REGISTRY_USER}/${IMAGE_NAME}:latest"
   - docker tag "$IMAGE_NAME" "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
