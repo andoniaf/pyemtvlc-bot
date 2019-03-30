@@ -13,7 +13,7 @@ def uptime_string():
     uptime_string = str(timedelta(seconds=uptime_seconds))
     # Build messsge
     string = ""
-    string += "\U0001F4BB Running on: " + uname[0] + " " + uname[2] + " " + uname[4] + "\n"
+    string += "\U0001F4BB Running on " + uname[0] + " " + uname[2] + " " + uname[4] + "\n"
     string += "\U0000231B Uptime: " + uptime_string + "\n"
     return string
 
