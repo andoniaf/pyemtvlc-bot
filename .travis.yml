@@ -22,9 +22,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: 
-    docker push "${REGISTRY_USER}/${IMAGE_NAME}:latest" 
-    docker push "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
+  script: docker push "${REGISTRY_USER}/${IMAGE_NAME}:latest" && docker push "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
   on:
     branch: master
 
