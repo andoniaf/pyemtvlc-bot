@@ -30,7 +30,7 @@ deploy:
   script: 
     docker push "${REGISTRY_USER}/${IMAGE_NAME}:latest" 
     docker push "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
-    docker push registry.heroku.com/$HEROKU_APP/worker;
+    docker push registry.heroku.com/$HEROKU_APP/worker
     heroku container:release worker --app $HEROKU_APP
   on:
     branch: master
