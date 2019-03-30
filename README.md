@@ -1,18 +1,12 @@
 # pyEMTbot-docker
+[![Build Status](https://travis-ci.org/andoniaf/pyemtvlc-bot.svg?branch=master)](https://travis-ci.org/andoniaf/pyemtvlc-bot)
+
 Imagen de docker que contiene un bot de telegram para consultar la EMT (Valencia).
 
 <img src="https://andoniaf.github.io/assets/images/2018/06/pyemtbot_tg_example.jpg" width="340" >
 
 ## Modo de uso (Pdte de actualizar con los nuevos cambios) 
-- Crear un fichero llamado `settings.py`:
-  ```
-  TOKEN = '' # Token del bot
-
-  USERS = "" # Chat ID permitidos
-  ADMIN = ""
-  ```
-
 - Arrancar el contenedor con:
   ```
-  docker run -d -v ${PWD}/settings.py:/pyemtbot/settings.py andoniaf/pyemtbot:latest
+  docker run -d -e TG_TOKEN=$YOUR_BOT_TOKEN andoniaf/pyemt-bot:latest
   ```
