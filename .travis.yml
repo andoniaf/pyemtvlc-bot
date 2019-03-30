@@ -11,10 +11,11 @@ script:
 env:
   global:
   - IMAGE_NAME=pyemtvlc-bot
+  - REGISTRY_USER=andoniaf
 
 before_deploy:
   - docker build -t "$IMAGE_NAME" .
-  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
   - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
   - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
 
