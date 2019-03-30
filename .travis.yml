@@ -12,15 +12,26 @@ env:
   global:
   - IMAGE_NAME=pyemtvlc-bot
   - REGISTRY_USER=andoniaf
+  - HEROKU_USER=andoniaf
+  - HEROKU_APP=pyemtvlc
   - VERSION=$(date '+%Y%m%d%H%M%S')
 
 before_deploy:
   - docker build -t "$IMAGE_NAME" .
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
+  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - docker tag "$IMAGE_NAME" "${REGISTRY_USER}/${IMAGE_NAME}:latest"
   - docker tag "$IMAGE_NAME" "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
+  - docker tag "${REGISTRY_USER}/${IMAGE_NAME}:latest" registry.heroku.com/$HEROKU_APP/worker
 
 deploy:
   provider: script
-  script: docker push "${REGISTRY_USER}/${IMAGE_NAME}:latest" && docker push "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
-  branch: master
+  script: 
+  - docker push "${REGISTRY_USER}/${IMAGE_NAME}:latest"
+  - docker push "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
+  - docker push registry.heroku.com/$HEROKU_APP/worker;
+  - heroku container:release worker --app $HEROKU_APP
+  on:
+    branch: master
+
