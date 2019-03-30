@@ -7,3 +7,19 @@ install:
 script:
   - flake8 --ignore=E501
   - pylint bot.py modules/* -E
+
+env:
+  global:
+  - IMAGE_NAME=pyemtvlc-bot
+
+before_deploy:
+  - docker build -t "$IMAGE_NAME" .
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
+
+deploy:
+  provider: script
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
+  on:
+    branch: master
