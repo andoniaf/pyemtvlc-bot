@@ -1,7 +1,7 @@
 import platform
 import uptime
 from datetime import timedelta
-import subprocess
+import pyemtvlc
 
 
 # Build uptime msg
@@ -20,6 +20,6 @@ def uptime_string():
 
 # Query EMT VLC and build msg
 def query_emt(data):
-    # Mensaje = logs_size_str
-    emt_info = (subprocess.getoutput("pyemtvlc " + data))
+    data_args = data.split()
+    emt_info = pyemtvlc.next_buses(*data_args)
     return emt_info

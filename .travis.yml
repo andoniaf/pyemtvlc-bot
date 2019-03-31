@@ -6,7 +6,7 @@ install:
   - pip install pylint flake8
 script:
   - flake8 --ignore=E501
-  - pylint bot.py modules/* -E
+  - pylint bot.py modules/* -E -d E0401
 
 env:
   global:

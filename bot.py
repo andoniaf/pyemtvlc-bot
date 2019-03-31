@@ -44,8 +44,11 @@ def main():
 
     def emt_info(update, context):
         msg = update.message.text
-        parada = msg.strip('/emt ')
-        text = query_emt(parada)
+        args = msg.strip('/emt ')
+        if args == "":
+            text = 'Uso: /emt <Parada> [<Linea>]'
+        else:
+            text = query_emt(args)
         update.message.reply_text(text)
 
     # Handlers
