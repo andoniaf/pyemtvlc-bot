@@ -21,6 +21,6 @@ def uptime_string():
 
 # Query EMT VLC and build msg
 def query_emt(data):
-    emt_info = pyemtvlc.next_buses(data)
-    #emt_info = (subprocess.getoutput("pyemtvlc " + data))
+    data_args = data.split()
+    emt_info = pyemtvlc.next_buses(*data_args)
     return emt_info
