@@ -5,7 +5,7 @@ Imagen de docker que contiene un bot de telegram para consultar la EMT (Valencia
 
 [Pruébame aquí!](https://telegram.me/emtvlcbot)
 
-<img src="imgs/demo_bot01.jpg" width="340" >
+<img src="imgs/demo_bot02.jpg" width="340" >
 
 ## Uso de la imagen Docker
 - Arrancar el contenedor con nuestro token:
