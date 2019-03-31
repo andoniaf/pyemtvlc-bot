@@ -3,10 +3,12 @@
 
 Imagen de docker que contiene un bot de telegram para consultar la EMT (Valencia).
 
-<img src="https://andoniaf.github.io/assets/images/2018/06/pyemtbot_tg_example.jpg" width="340" >
+[Pruébame aquí!](https://telegram.me/emtvlcbot)
 
-## Modo de uso (Pdte de actualizar con los nuevos cambios) 
-- Arrancar el contenedor con:
+<img src="imgs/demo_bot01.jpg" width="340" >
+
+## Uso de la imagen Docker
+- Arrancar el contenedor con nuestro token:
   ```
-  docker run -d -e TG_TOKEN=$YOUR_BOT_TOKEN andoniaf/pyemt-bot:latest
+  docker run -d -e TG_TOKEN=$YOUR_BOT_TOKEN andoniaf/pyemtvlc-bot:latest
   ```
