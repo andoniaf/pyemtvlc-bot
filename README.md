@@ -1,4 +1,4 @@
-# pyEMTbot-docker
+# pyemtvlc-bot
 [![Build Status](https://travis-ci.org/andoniaf/pyemtvlc-bot.svg?branch=master)](https://travis-ci.org/andoniaf/pyemtvlc-bot)
 
 Imagen de docker que contiene un bot de telegram para consultar la EMT (Valencia).
