@@ -1,7 +1,6 @@
 import platform
 import uptime
 from datetime import timedelta
-import subprocess
 import pyemtvlc
 
 
