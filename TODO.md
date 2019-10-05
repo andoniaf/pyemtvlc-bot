@@ -3,7 +3,7 @@
 - []: Manage emt error, p.e: when there is no "parada", only /emt
 - []: Setup autodeploy Heroku (TravisCI)
 - []: Add test
-- []: Fix this:
+- [X]: Fix this:
       ```
       C3PO.pybot, [31.03.19 10:18]
       /bin/sh: syntax error: unterminated quoted string
@@ -44,7 +44,7 @@
       uid=1000(pyuser) gid=1000(pyuser)
       ```
 
-- []: Fix this (prob pyemtvlc pkg problem):
+- [X]: Fix this (prob pyemtvlc pkg problem):
       Andoni, [31.03.19 10:23]
       /emt 800 && uname
 

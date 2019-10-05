@@ -12,7 +12,8 @@ env:
   global:
   - IMAGE_NAME=pyemtvlc-bot
   - REGISTRY_USER=andoniaf
-  - VERSION=$(date '+%Y%m%d%H%M%S')
+  - VERSION=$(cat .semver)
+
 
 before_deploy:
   - docker build -t "$IMAGE_NAME" .
