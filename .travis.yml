@@ -7,6 +7,7 @@ install:
 script:
   - flake8 --ignore=E501
   - pylint bot.py modules/* -E -d E0401
+  - bash tests/testDockerfile.sh
 
 env:
   global:
@@ -14,9 +15,10 @@ env:
   - REGISTRY_USER=andoniaf
   - VERSION=$(cat .semver)
 
+before_scripts:
+  - docker build -t "$IMAGE_NAME" .
 
 before_deploy:
-  - docker build -t "$IMAGE_NAME" .
   - echo "$REGISTRY_PASS" | docker login -u "$REGISTRY_USER" --password-stdin
   - docker tag "$IMAGE_NAME" "${REGISTRY_USER}/${IMAGE_NAME}:latest"
   - docker tag "$IMAGE_NAME" "${REGISTRY_USER}/${IMAGE_NAME}:${VERSION}"
